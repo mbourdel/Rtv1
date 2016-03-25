@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 13:43:37 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/24 16:34:58 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/03/25 12:55:43 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int			key_hook(int k, t_env *env)
 	if (k == ESC)
 	{
 		free(env->mlx.data);
-		mlx_destroy_image(env->mlx.mlx, env->mlx.img);
-		mlx_destroy_window(env->mlx.mlx, env->mlx.win);
+		free(env->mlx.img);
+		free(env->mlx.win);
 		free(env->mlx.mlx);
 		exit(0);
 	}

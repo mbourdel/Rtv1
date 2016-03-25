@@ -6,13 +6,16 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/19 14:05:23 by mbourdel          #+#    #+#              #
-#    Updated: 2016/03/24 12:36:28 by mbourdel         ###   ########.fr        #
+#    Updated: 2016/03/25 12:53:57 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Rtv1
 
-SRC = rtv1.c
+SRC = rtv1.c \
+	  get_next_line.c \
+	  vector.c \
+	  parser.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -60,4 +63,16 @@ deslib:
 	@cd $(MLX_PATH); $(MAKE) clean -f Makefile
 
 total: deslib re
+
+noflag:
+	@echo "No Flag mod"
+	@cd $(LIBFT_PATH); $(MAKE) -f Makefile
+	@cd $(MLX_PATH); $(MAKE) -f Makefile
+	@gcc -c $(SRC)
+	@gcc $(OBJ) -o $(NAME) $(LIBFT_PATH)libft.a $(MLX)
+	@echo "[================]"
+	@echo "|     succes !   |"
+	@echo "|      Rtv1      |"
+	@echo "|  was summoned  |"
+	@echo "[================]"
 

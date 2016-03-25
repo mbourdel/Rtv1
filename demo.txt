@@ -1,0 +1,23 @@
+/Demo type file for rtv1
+/ <- design comment
+/== for design camera
+/++ for design item
+/-- for design light source
+/%% for design number of item
+/&& for design number of light source
+/
+/
+/
+%% 1
+&& 1
+==camera
+x= 100.0
+y= 0.0
+z= 0.0
+f= 0
+++sphere
+x= 0.0
+y= 0.0
+z= 0.0
+r= 10.0
+

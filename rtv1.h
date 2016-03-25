@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 12:49:57 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/24 16:31:52 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/03/25 14:18:29 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "mlx.h"
 # include "libft/libft.h"
+
+/*
+**  --key--
+*/
 
 # define ESC 53
 # define ENTER 36
@@ -33,9 +37,14 @@
 # define RIGHT_CLK 2
 # define SCROLL_DW 4
 # define SCROLL_UP 5
+
+/*
+**  --key end--
+*/
+
 # define X_SIZE 800
 # define Y_SIZE 600
-# define IT_MUX 43
+# define ITEM_MAX 5
 
 
 typedef struct s_mlx	t_mlx;
@@ -50,19 +59,53 @@ struct					s_mlx
 	int					endian;
 };
 
-typedef struct s_env	t_env;
-struct					s_env
+typedef struct s_item	t_item;
+struct					s_item
 {
-	t_mlx				mlx;
+	int					type;
+	void				*item;
+};
+
+typedef struct s_vector	t_vector;
+struct					s_vector
+{
+	double				x;
+	double				y;
+	double				z;
 };
 
 typedef struct s_sphere	t_sphere;
 struct					s_sphere
 {
-	int					x;
-	int					y;
-	int					z;
-	int					rayon;
+	t_vector			position;
+	float				radius;
 };
+
+typedef struct s_ray	t_ray;
+struct					s_ray
+{
+	t_vector			origin;
+	t_vector			direction;
+};
+
+typedef struct s_cam	t_cam;
+struct					s_cam
+{
+	t_vector			origin;
+	int					focus;
+};
+
+typedef struct s_env	t_env;
+struct					s_env
+{
+	t_mlx				mlx;
+	t_item				item_list[ITEM_MAX];
+	int					item_nbr;
+	int					light_nbr;
+};
+
+int						parser(t_env *env, char *file_name);
+int						key_hook(int k, t_env *env);
+int						expose_hook(t_env *env);
 
 #endif
