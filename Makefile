@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/19 14:05:23 by mbourdel          #+#    #+#              #
-#    Updated: 2016/03/25 12:53:57 by mbourdel         ###   ########.fr        #
+#    Updated: 2016/03/27 07:38:25 by mbourdel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = Rtv1
 
 SRC = rtv1.c \
 	  get_next_line.c \
+	  item.c \
 	  vector.c \
 	  parser.c
 
