@@ -6,33 +6,44 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 12:24:23 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/27 06:05:10 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/05/06 12:20:34 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-static int	this_is_cam(t_env *env, int fd, int nbr)
+static int	this_is_cam(t_env *env, int fd)
 {
 	int		ret;
 	char	*str;
 
-	env->item_list[nbr].type = 0;
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (-1);
-	env->item_list[nbr].cam.origin.x = ft_atod(str + 2);
+	env->cam.origin.x = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (-1);
-	env->item_list[nbr].cam.origin.y = ft_atod(str + 2);
+	env->cam.origin.y = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (-1);
-	env->item_list[nbr].cam.origin.z = ft_atod(str + 2);
+	env->cam.origin.z = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (-1);
-	env->item_list[nbr].cam.focus = ft_atoi(str + 2);
+	env->cam.direction.x = ft_atod(str + 2);
+	free(str);
+	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
+		return (-1);
+	env->cam.direction.y = ft_atod(str + 2);
+	free(str);
+	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
+		return (-1);
+	env->cam.direction.z = ft_atod(str + 2);
+	free(str);
+	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
+		return (-1);
+	env->cam.focus = ft_atoi(str + 2);
 	free(str);
 	return (1);
 }
@@ -41,13 +52,13 @@ static int	this_is_item(t_env *env, int fd, char *str, int nbr)
 {
 	int		ret;
 
-	if (!ft_strcmp(str, "++sphere"))
+	if (ft_strcmp(str, "++sphere") == 0)
 		ret = this_is_sphere(env, fd, nbr);
-	else if (!ft_strcmp(str, "++cone\n"))
+	else if (ft_strcmp(str, "++cone") == 0)
 		ret = this_is_cone(env, fd, nbr);
-	else if (!ft_strcmp(str, "++cylindre\n"))
+	else if (ft_strcmp(str, "++cylindre") == 0)
 		ret = this_is_cylindre(env, fd, nbr);
-	else if (!ft_strcmp(str, "++plane\n"))
+	else if (ft_strcmp(str, "++plane") == 0)
 		ret = this_is_plane(env, fd, nbr);
 	return (ret);
 }

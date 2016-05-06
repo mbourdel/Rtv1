@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 12:49:57 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/27 07:37:55 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/05/06 15:06:44 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "libft/libft.h"
 # include "get_next_line.h"
 # include <fcntl.h>
+# include <math.h>
 
 /*
 **  --key--
@@ -109,6 +110,7 @@ typedef struct s_cam	t_cam;
 struct					s_cam
 {
 	t_vector			origin;
+	t_vector			direction;
 	int					focus;
 };
 
@@ -116,7 +118,9 @@ typedef struct s_item	t_item;
 struct					s_item
 {
 	int					type;
-	t_cam				cam;
+//	t_vector			origin;
+//	t_vector			direction;
+//	float				radius;
 	t_sphere			sphere;
 	t_cone				cone;
 	t_cylindre			cylindre;
@@ -127,6 +131,7 @@ typedef struct s_env	t_env;
 struct					s_env
 {
 	t_mlx				mlx;
+	t_cam				cam;
 	t_item				item_list[ITEM_MAX];
 	int					item_nbr;
 	int					light_nbr;

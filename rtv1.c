@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 13:43:37 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/27 09:04:54 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/05/05 17:29:35 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,18 @@ int			key_hook(int k, t_env *env)
 
 int			expose_hook(t_env *env)
 {
-	double	vx;
-	double	vy;
-	double	vz;
-	double	a, b, c;
+	t_ray	ray;
 
-	vz = (double)env->item_list[0].cam.focus;
-	while (x < X_SIZE)
+	ray = create_ray(t_env *env);
+	while (ray.origin.x < X_SIZE)
 	{
-		vx = (x - (X_SIZE / 2));
-		while (y < Y_SIZE)
-		{
-			vy = (y - (Y_SIZE / 2));
-			a = vx * vx + vy * vy + vz * vz;
-			b = 2 * vx * (x - env->item_list[1].sphere.origin.x);
-			c =  square(x - env->item_list[1].sphere.origin.x);
-
-			b += 2 * vy * (y - env->item_list[1].sphere.origin.y);
-			c += square(y - env->item_list[1].sphere.origin.y);
-
-			b += 2 * vz * (vz-env->item_list[1].sphere.origin.z);
-			c += square(vz - env->item_list[1].sphere.origin.z);
-			c -= square(env->item_list[1].sphere.origin.radius);
-			y++;
+		while (ray.origin.y < Y_SIZE)
+		{	
+			does_it_hit(env, ray);
+			ray.origin.y++;
 		}
-		y = 0;
-		x++;
+		ray.origin.y = 0;
+		ray.origin.x++;
 	}
 	mlx_put_image_to_window(env->mlx.mlx, env->mlx.win, env->mlx.img, 0, 0);
 	return (0);
