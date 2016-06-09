@@ -6,18 +6,18 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 12:06:33 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/27 07:38:09 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/06/09 15:26:05 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-double		v_dot(t_vector v1, t_vector v2)
+float		v_dot(t_vector v1, t_vector v2)
 {
 	return (v1.x * v2.x + v1.y * v2.y + v1.z * v2.z);
 }
 
-double		v_sub(t_vector v1, t_vector v2)
+t_vector	v_sub(t_vector v1, t_vector v2)
 {
 	t_vector	v;
 
@@ -27,7 +27,7 @@ double		v_sub(t_vector v1, t_vector v2)
 	return (v);
 }
 
-double		v_add(t_vector v1, t_vector v2)
+t_vector	v_add(t_vector v1, t_vector v2)
 {
 	t_vector	v;
 
@@ -37,7 +37,7 @@ double		v_add(t_vector v1, t_vector v2)
 	return (v);
 }
 
-double		v_scale(double c, t_vector v)
+t_vector	v_scale(float c, t_vector v)
 {
 	v.x *= c;
 	v.y *= c;

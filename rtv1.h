@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 12:49:57 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/05/06 15:06:44 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/06/09 15:54:36 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define X_SIZE 800
 # define Y_SIZE 600
 # define ITEM_MAX 10
+# define LIGHT_MAX 2
 
 typedef struct s_mlx	t_mlx;
 struct					s_mlx
@@ -64,9 +65,9 @@ struct					s_mlx
 typedef struct s_vector	t_vector;
 struct					s_vector
 {
-	double				x;
-	double				y;
-	double				z;
+	float				x;
+	float				y;
+	float				z;
 };
 
 typedef struct s_sphere	t_sphere;
@@ -118,13 +119,17 @@ typedef struct s_item	t_item;
 struct					s_item
 {
 	int					type;
-//	t_vector			origin;
-//	t_vector			direction;
-//	float				radius;
 	t_sphere			sphere;
 	t_cone				cone;
 	t_cylindre			cylindre;
 	t_plane				plane;
+};
+
+typedef struct s_light	t_light;
+struct					s_light
+{
+	t_vector			origin;
+	unsigned int		color;
 };
 
 typedef struct s_env	t_env;
@@ -133,18 +138,22 @@ struct					s_env
 	t_mlx				mlx;
 	t_cam				cam;
 	t_item				item_list[ITEM_MAX];
+	t_light				light_list[LIGHT_MAX];
 	int					item_nbr;
 	int					light_nbr;
 };
 
-int						this_is_sphere(t_env *env, int fd, int nbr);
-int						this_is_cone(t_env *env, int fd, int nbr);
-int						this_is_cylindre(t_env *env, int fd, int nbr);
-int						this_is_plane(t_env *env, int fd, int nbr);
-double					v_dot(t_vector v1, t_vector v2);
-double					v_sub(t_vector v1, t_vector v2);
-double					v_add(t_vector v1, t_vector v2);
-double					v_scale(double c, t_vector v);
+void					pixel_put_img(t_env *env, int x, int y, unsigned int color);
+//int						this_is_sphere(t_env *env, int fd, int nbr);
+//int						this_is_cone(t_env *env, int fd, int nbr);
+//int						this_is_cylindre(t_env *env, int fd, int nbr);
+//int						this_is_plane(t_env *env, int fd, int nbr);
+int						touch_sphere(t_env *env, t_ray ray, t_sphere sphere);
+float					v_dot(t_vector v1, t_vector v2);
+t_vector				v_sub(t_vector v1, t_vector v2);
+t_vector				v_add(t_vector v1, t_vector v2);
+t_vector				v_scale(float c, t_vector v);
+t_ray					create_ray(t_env *env);
 //int						this_is_light(t_env *env, int fd, int nbr);
 int						parser(t_env *env, char *file_name);
 int						key_hook(int k, t_env *env);

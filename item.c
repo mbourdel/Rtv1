@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/27 01:19:34 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/03/27 06:05:20 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/06/08 17:28:51 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				this_is_sphere(t_env *env, int fd, int nbr)
 	free(str);
 	return (ret);
 }
-
+/*
 int				this_is_cone(t_env *env, int fd, int nbr)
 {
 	int			ret;
@@ -60,3 +60,4 @@ int				this_is_plane(t_env *enc, int fd, int nbr)
 
 	return (ret);
 }
+*/

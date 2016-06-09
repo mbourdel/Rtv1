@@ -6,13 +6,13 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/06 15:35:32 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/05/06 15:45:52 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/06/08 17:49:05 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-void		pixel_put_img(t_env, int x, int y, unsigned int color)
+void		pixel_put_img(t_env *env, int x, int y, unsigned int color)
 {
 	int		i;
 	char	clr[(env->mlx.bpp / 8) - 1];
@@ -33,5 +33,6 @@ void		pixel_put_img(t_env, int x, int y, unsigned int color)
 			env->mlx.data[(y * env->mlx.size_line) +
 				(x * (env->mlx.bpp / 8)) + i] = clr[i];
 			i--;
+		}
 	}
 }
