@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 12:24:23 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/06/09 16:07:25 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/06/10 18:37:48 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,27 @@ static int	this_is_cam(t_env *env, int fd)
 
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.origin.x = ft_atof(str + 2);
+	env->cam.origin.x = ft_atod(str + 2) + (X_SIZE / 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.origin.y = ft_atof(str + 2);
+	env->cam.origin.y = ft_atod(str + 2) + (Y_SIZE / 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.origin.z = ft_atof(str + 2);
+	env->cam.origin.z = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.direction.x = ft_atof(str + 2);
+	env->cam.direction.x = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.direction.y = ft_atof(str + 2);
+	env->cam.direction.y = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.direction.z = ft_atof(str + 2);
+	env->cam.direction.z = ft_atod(str + 2);
 	free(str);
 	return (0);
 }
@@ -51,19 +51,19 @@ static int	this_is_sphere(t_env *env, int fd, int *nbr)
 
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->item_list[*nbr].sphere.origin.x = ft_atof(str + 2);
+	env->item_list[*nbr].sphere.origin.x = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->item_list[*nbr].sphere.origin.y = ft_atof(str + 2);
+	env->item_list[*nbr].sphere.origin.y = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->item_list[*nbr].sphere.origin.z = ft_atof(str + 2);
+	env->item_list[*nbr].sphere.origin.z = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->item_list[*nbr].sphere.radius = ft_atof(str + 2);
+	env->item_list[*nbr].sphere.radius = ft_atod(str + 2);
 	free(str);
 	env->item_list[*nbr++].type = 1;
 	return (0);
@@ -76,15 +76,15 @@ static int	this_is_light(t_env *env, int fd, int *lnbr)
 
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->light_list[*lnbr].origin.x = ft_atof(str + 2);
+	env->light_list[*lnbr].origin.x = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->light_list[*lnbr].origin.y = ft_atof(str + 2);
+	env->light_list[*lnbr].origin.y = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->light_list[*lnbr].origin.z = ft_atof(str + 2);
+	env->light_list[*lnbr].origin.z = ft_atod(str + 2);
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
