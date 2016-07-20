@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 13:43:37 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/06/10 18:28:47 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/07/20 13:48:41 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ int			expose_hook(t_env *env)
 	{
 		while (env->y_cursor < Y_SIZE)
 		{	
-			touch_sphere(env, ray, env->item_list[0].sphere);
-			//does_it_hit(env, ray);
-			ray.origin.y++;
+			//touch_sphere(env, ray, env->item_list[0].sphere);
+			does_it_hit(env, ray);
+			ray.direction.y++;
 			env->y_cursor++;
 		}
 		env->y_cursor = 0;
 		env->x_cursor++;
-		ray.origin.y = env->cam.origin.y /*- Y_SIZE / 2*/;
-		ray.origin.x++;
+		ray.direction.y = env->cam.direction.y - (Y_SIZE / 2);
+		ray.direction.x++;
 	}
+	ft_putchar('\n');
 	mlx_put_image_to_window(env->mlx.mlx, env->mlx.win, env->mlx.img, 0, 0);
 	return (0);
 }

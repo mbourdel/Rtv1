@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 12:24:23 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/06/10 18:37:48 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/07/20 10:58:51 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static int	this_is_cam(t_env *env, int fd)
 
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.origin.x = ft_atod(str + 2) + (X_SIZE / 2);
+	env->cam.origin.x = ft_atod(str + 2) /*+ (X_SIZE / 2)*/;
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->cam.origin.y = ft_atod(str + 2) + (Y_SIZE / 2);
+	env->cam.origin.y = ft_atod(str + 2) /*+ (Y_SIZE / 2)*/;
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
