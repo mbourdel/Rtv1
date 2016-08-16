@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/27 07:45:53 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/07/20 13:16:12 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/08/16 17:28:11 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int			touch_sphere(t_ray ray, t_sphere s, double *t)
 	t0 = ((abc.y * -1) + i) / 2;
 	t1 = ((abc.y * -1) - i) / 2;
 	*t = t0 > t1 ? t1 : t0;
+//	touchdown(env, *t);
 	return (1);
 }
 /*

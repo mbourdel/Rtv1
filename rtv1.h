@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 12:49:57 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/08/16 16:16:13 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/08/16 17:29:00 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # define RIGHT_CLK 2
 # define SCROLL_DW 4
 # define SCROLL_UP 5
+# define DIST_MAX 60000
 
 /*
 **  --key end--
