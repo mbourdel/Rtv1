@@ -6,14 +6,14 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 12:49:57 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/06/10 16:28:55 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/08/16 16:16:13 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# include "mlx.h"
+# include "minilibx/mlx.h"
 # include "libft/libft.h"
 # include "get_next_line.h"
 # include <fcntl.h>
@@ -150,7 +150,7 @@ void					pixel_put_img(t_env *env, int x, int y, unsigned int color);
 //int						this_is_cone(t_env *env, int fd, int nbr);
 //int						this_is_cylindre(t_env *env, int fd, int nbr);
 //int						this_is_plane(t_env *env, int fd, int nbr);
-int						touch_sphere(t_env *env, t_ray ray, t_sphere sphere);
+int						touch_sphere(t_ray ray, t_sphere sphere, double *t);
 double					v_dot(t_vector v1, t_vector v2);
 t_vector				v_sub(t_vector v1, t_vector v2);
 t_vector				v_add(t_vector v1, t_vector v2);

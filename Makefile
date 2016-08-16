@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/19 14:05:23 by mbourdel          #+#    #+#              #
-#*   Updated: 2016/05/06 16:20:02 by mbourdel         ###   ########.fr       *#
+#*   Updated: 2016/08/16 16:23:34 by mbourdel         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LIBFT_PATH = ./libft/
 
 MLX = minilibx_macos/libmlx.a -framework OpenGL -framework AppKit
 
-L_MLX = minilibx/libmlx.a -lXext -lX11
+L_MLX = ./minilibx/libmlx.a -lXext -lX11
 
 MLX_PATH = ./minilibx_macos/
 
@@ -85,8 +85,8 @@ noflag:
 	@echo "[================]"
 
 linux:
-	@cd $(LBFT_PATH); $(MAKE) -f Makefile
+	@cd $(LIBFT_PATH); $(MAKE) -f Makefile
 	@cd $(L_MLX_PATH); $(MAKE) -f Makefile
-	@gcc -0fast -c $(SRC)
-	@gcc $(OBJ) -o $(NAME) $(LIBFT_PATH)libft.a $(L_MLX)
+	@gcc -c $(SRC)
+	@gcc $(OBJ) -o $(NAME) $(LIBFT_PATH)libft.a $(L_MLX) -lm
 	@echo "TATATATATATAT"
