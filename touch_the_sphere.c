@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/27 07:45:53 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/08/16 17:28:11 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/09/16 16:53:04 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,28 @@ int			touch_sphere(t_ray ray, t_sphere s, double *t)
 
 	abc.x = v_dot(ray.direction, ray.direction);
 	dist = v_sub(ray.origin, s.origin);
-	abc.y = 2 * v_dot(ray.origin, dist);
+	abc.y = 2 * v_dot(ray.direction, dist);
 	abc.z = v_dot(dist, dist) - (s.radius * s.radius);
 	i = (abc.y * abc.y) - (4 * abc.x * abc.z);
 	if (i < 0)
 		return (0);
-	i = sqrt(i);
-	t0 = ((abc.y * -1) + i) / 2;
-	t1 = ((abc.y * -1) - i) / 2;
-	*t = t0 > t1 ? t1 : t0;
+	else if (i == 0)
+		*t = (- 0.5 * abc.y) / abc.x;
+	else
+	{
+		i = sqrt(i);
+		t0 = (abc.y > 0) ? - 0.5 * (abc.y + i) : - 0.5 * (abc.y - i);
+		t1 = abc.z / t0;
+		t0 = t0 / abc.x;
+	//t0 = ((abc.y * -1) + i) / 2;
+	//t1 = ((abc.y * -1) - i) / 2;
+		t0 = t0 > t1 ? t1 : t0;
+		if (t0 < 0)
+			t0 = t1;
+		if (t0 < 0)
+			return (0);
+		*t = t0;
+	}
 //	touchdown(env, *t);
 	return (1);
 }

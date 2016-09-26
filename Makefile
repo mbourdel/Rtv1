@@ -6,7 +6,7 @@
 #    By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/19 14:05:23 by mbourdel          #+#    #+#              #
-#*   Updated: 2016/08/16 16:23:34 by mbourdel         ###   ########.fr       *#
+#*   Updated: 2016/09/26 16:17:10 by mbourdel         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,4 +89,4 @@ linux:
 	@cd $(L_MLX_PATH); $(MAKE) -f Makefile
 	@gcc -c $(SRC)
 	@gcc $(OBJ) -o $(NAME) $(LIBFT_PATH)libft.a $(L_MLX) -lm
-	@echo "TATATATATATAT"
+	@echo "Succes !: Linux version has been corectly installed"

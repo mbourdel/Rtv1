@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/25 12:24:23 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/07/20 10:58:51 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/09/15 17:43:41 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	this_is_sphere(t_env *env, int fd, int *nbr)
 		return (1);
 	env->item_list[*nbr].sphere.radius = ft_atod(str + 2);
 	free(str);
-	env->item_list[*nbr++].type = 1;
+	env->item_list[*nbr].type = 1;
 	return (0);
 }
 
@@ -88,8 +88,9 @@ static int	this_is_light(t_env *env, int fd, int *lnbr)
 	free(str);
 	if ((ret = get_next_line(fd, &str)) == -1 || ret == 0)
 		return (1);
-	env->light_list[*(lnbr++)].color = (unsigned int)ft_atoi(str + 2);
+	env->light_list[*lnbr].color = (unsigned int)ft_atoi(str + 2);
 	free(str);
+	*lnbr++;
 	return (0);
 }
 
@@ -106,6 +107,7 @@ static int	this_is_item(t_env *env, int fd, char *str, int *nbr)
 //		ret = this_is_cylindre(env, fd, nbr);
 //	else if (ft_strcmp(str, "++plane") == 0)
 //		ret = this_is_plane(env, fd, *nbr);
+	*nbr = *nbr + 1;
 	return (ret);
 }
 
@@ -158,5 +160,9 @@ int			parser(t_env *env, char *file_name)
 		else
 			free(str);
 	}
+	printf("x= %lf\ny= %lf\nz= %lf\n", env->item_list[0].sphere.origin.x, env->item_list[0].sphere.origin.y, env->item_list[0].sphere.origin.z);
+
+	printf("x= %lf\ny= %lf\nz= %lf\n", env->item_list[1].sphere.origin.x, env->item_list[1].sphere.origin.y, env->item_list[1].sphere.origin.z);
+
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 12:49:57 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/08/16 17:29:00 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/08/16 18:35:48 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "get_next_line.h"
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 /*
 **  --key--

@@ -6,7 +6,7 @@
 /*   By: mbourdel <mbourdel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/24 13:43:37 by mbourdel          #+#    #+#             */
-/*   Updated: 2016/07/20 13:48:41 by mbourdel         ###   ########.fr       */
+/*   Updated: 2016/09/13 15:41:16 by mbourdel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ int			expose_hook(t_env *env)
 			does_it_hit(env, ray);
 			ray.direction.y++;
 			env->y_cursor++;
+			if (env->x_cursor == (X_SIZE / 2))
+				pixel_put_img(env, env->x_cursor, env->y_cursor, 0xFF0000);
+			if (env->y_cursor == (Y_SIZE / 2))
+				pixel_put_img(env, env->x_cursor, env->y_cursor, 0xFF0000);
 		}
 		env->y_cursor = 0;
 		env->x_cursor++;
